@@ -5,7 +5,7 @@ const LINKEDIN_URL = 'https://www.linkedin.com/in/aditya-parthasarathy-924a6a349
 
 export default function Footer() {
   return (
-    <footer className="px-6 py-8 border-t border-line">
+    <footer className="px-6 py-8 bg-ink border-t border-line">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
         <span>© {new Date().getFullYear()} Aditya Parthasarathy. Built from scratch.</span>
         <div className="flex items-center gap-4">

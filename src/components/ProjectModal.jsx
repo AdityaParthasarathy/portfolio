@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react'
+import MagneticButton from './MagneticButton'
 
 export default function ProjectModal({ project, onClose }) {
   const [idx, setIdx] = useState(0)
@@ -83,14 +84,29 @@ export default function ProjectModal({ project, onClose }) {
               >
                 {project.year}
               </p>
-              <h3 className="font-display text-3xl font-semibold text-text">{project.name}</h3>
-              <p className="mt-1.5 text-accent2 font-medium">{project.tagline}</p>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="font-display text-3xl font-semibold text-text">{project.name}</h3>
+                  <p className="mt-1.5 text-accent font-medium">{project.tagline}</p>
+                </div>
+                {project.liveUrl && (
+                  <MagneticButton
+                    as="a"
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 rounded-full bg-accent text-white text-sm font-semibold px-5 py-3 flex items-center gap-1.5 hover:brightness-110 transition-[filter]"
+                  >
+                    View live <ArrowUpRight size={15} />
+                  </MagneticButton>
+                )}
+              </div>
               <p className="mt-5 text-muted leading-relaxed">{project.summary}</p>
 
               <ul className="mt-6 space-y-2.5">
                 {project.highlights.map((h) => (
                   <li key={h} className="flex items-start gap-2.5 text-sm text-text/90">
-                    <span className="mt-1.5 w-1 h-1 rounded-full bg-accent2 shrink-0" />
+                    <span className="mt-1.5 w-1 h-1 rounded-full bg-accent shrink-0" />
                     {h}
                   </li>
                 ))}

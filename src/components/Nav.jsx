@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { Menu, X, ArrowUpRight, Github, Linkedin, Download } from 'lucide-react'
 import MagneticButton from './MagneticButton'
 
 const LINKS = [
@@ -9,6 +9,10 @@ const LINKS = [
   { href: '#skills', label: 'Skills' },
   { href: '#contact', label: 'Contact' },
 ]
+
+const GITHUB_URL = 'https://github.com/AdityaParthasarathy'
+const LINKEDIN_URL = 'https://www.linkedin.com/in/aditya-parthasarathy-924a6a349'
+const RESUME_URL = '/Aditya_Parthasarathy_Resume.pdf'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -29,16 +33,16 @@ export default function Nav() {
         scrolled ? 'py-3' : 'py-6'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <div
-          className={`flex items-center justify-between rounded-2xl px-4 transition-all duration-300 ${
+          className={`flex items-center justify-between rounded-2xl px-6 transition-all duration-300 ${
             scrolled
               ? 'py-2.5 bg-surface/70 border border-line backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.35)]'
               : 'py-2 bg-transparent border border-transparent'
           }`}
         >
           <a href="#top" className="flex items-center gap-2.5 group">
-            <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent2 flex items-center justify-center font-display font-bold text-ink text-sm">
+            <span className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center font-display font-bold text-white text-sm">
               AP
             </span>
             <span className="font-display font-semibold text-sm tracking-tight text-text hidden sm:block">
@@ -46,7 +50,7 @@ export default function Nav() {
             </span>
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-12">
             {LINKS.map((link) => (
               <a
                 key={link.href}
@@ -54,16 +58,44 @@ export default function Nav() {
                 className="text-sm text-muted hover:text-text transition-colors relative group"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent2 transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-6">
+            <div className="flex items-center gap-4 pr-6 border-r border-line">
+              <a
+                href={GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="text-muted hover:text-accent transition-colors"
+              >
+                <Github size={18} />
+              </a>
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-muted hover:text-accent transition-colors"
+              >
+                <Linkedin size={18} />
+              </a>
+            </div>
+            <MagneticButton
+              as="a"
+              href={RESUME_URL}
+              download
+              className="rounded-full border border-line text-text text-sm font-semibold px-5 py-2.5 flex items-center gap-1.5 hover:border-accent/60 hover:text-accent transition-colors"
+            >
+              Resume <Download size={14} />
+            </MagneticButton>
             <MagneticButton
               as="a"
               href="#contact"
-              className="rounded-full bg-text text-ink text-sm font-semibold px-5 py-2.5 flex items-center gap-1.5 hover:bg-accent2 transition-colors"
+              className="rounded-full bg-text text-ink text-sm font-semibold px-5 py-2.5 flex items-center gap-1.5 hover:bg-accent hover:text-white transition-colors"
             >
               Hire me <ArrowUpRight size={14} />
             </MagneticButton>
@@ -99,9 +131,17 @@ export default function Nav() {
                 </a>
               ))}
               <a
+                href={RESUME_URL}
+                download
+                onClick={() => setOpen(false)}
+                className="mt-2 px-3 py-3 rounded-lg text-sm font-semibold border border-line text-text text-center flex items-center justify-center gap-1.5"
+              >
+                Resume <Download size={14} />
+              </a>
+              <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="mt-2 px-3 py-3 rounded-lg text-sm font-semibold bg-text text-ink text-center"
+                className="px-3 py-3 rounded-lg text-sm font-semibold bg-text text-ink text-center"
               >
                 Hire me
               </a>

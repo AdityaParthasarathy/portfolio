@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, Copy, Check, Github, Linkedin } from 'lucide-react'
 import MagneticButton from './MagneticButton'
+import EmailComposeModal from './EmailComposeModal'
 
 const EMAIL = 'adityapartha1@gmail.com'
 const PHONE = '+91 81229 07520'
@@ -49,8 +50,10 @@ function CopyRow({ icon: Icon, label, value, copyValue }) {
 }
 
 export default function Contact() {
+  const [composeOpen, setComposeOpen] = useState(false)
+
   return (
-    <section id="contact" className="relative px-6 py-28 sm:py-40 border-t border-line">
+    <section id="contact" className="relative px-6 py-28 sm:py-40 bg-ink border-t border-line">
       <div className="max-w-4xl mx-auto text-center">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
@@ -91,13 +94,15 @@ export default function Contact() {
           className="mt-10 flex justify-center"
         >
           <MagneticButton
-            as="a"
-            href={`mailto:${EMAIL}`}
-            className="rounded-full bg-accent text-white text-base font-semibold px-9 py-5 flex items-center gap-2 shadow-[0_0_50px_rgba(124,92,255,0.4)] hover:shadow-[0_0_80px_rgba(124,92,255,0.6)] transition-shadow"
+            as="button"
+            onClick={() => setComposeOpen(true)}
+            className="rounded-full bg-accent text-white text-base font-semibold px-9 py-5 flex items-center gap-2 shadow-[0_0_50px_rgba(229,52,42,0.4)] hover:shadow-[0_0_80px_rgba(229,52,42,0.6)] transition-shadow"
           >
             <Mail size={18} /> Email me
           </MagneticButton>
         </motion.div>
+
+        <EmailComposeModal open={composeOpen} onClose={() => setComposeOpen(false)} />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

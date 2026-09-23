@@ -4,19 +4,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#08090c',
-        surface: '#0e1015',
-        'surface-2': '#14171f',
-        line: 'rgba(255,255,255,0.08)',
-        accent: '#7c5cff',
-        accent2: '#37e6c4',
-        text: '#eef0f5',
-        muted: '#8a8fa3',
+        ink: '#060404',
+        surface: '#0f0a0a',
+        'surface-2': '#170f0f',
+        line: 'rgba(255,255,255,0.09)',
+        accent: '#e5342a',
+        accent2: '#ff6b5b',
+        text: '#f5f1ee',
+        muted: '#9a9096',
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         sans: ['"Inter"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
+        script: ['"Caveat"', 'cursive'],
       },
       backgroundImage: {
         'grid-fade': 'linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px)',

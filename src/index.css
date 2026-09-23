@@ -26,14 +26,14 @@ html {
 }
 
 body {
-  background: #08090c;
-  color: #eef0f5;
+  background: #060404;
+  color: #f5f1ee;
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: #7c5cff;
+  background: #e5342a;
   color: #fff;
 }
 
@@ -45,12 +45,22 @@ body {
   font-family: 'JetBrains Mono', monospace;
 }
 
+.font-script {
+  font-family: 'Caveat', cursive;
+}
+
 /* Gradient text */
 .text-gradient {
-  background: linear-gradient(120deg, #eef0f5 0%, #b9b3ff 45%, #37e6c4 100%);
+  background: linear-gradient(120deg, #ffffff 0%, #ff9d8f 45%, #e5342a 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* Giant outlined watermark text behind hero portrait */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(229, 52, 42, 0.35);
 }
 
 /* Noise overlay */
@@ -85,10 +95,23 @@ body {
   will-change: transform;
 }
 
+/* Work timeline — active card/node state as scroll passes each event */
+.timeline-card-active {
+  border-color: rgba(229, 52, 42, 0.5);
+  background: #170f0f;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+.timeline-node-active {
+  transform: translateX(-50%) scale(1.25);
+  border-color: #e5342a;
+  background: #e5342a;
+}
+
 /* Focus ring accessibility */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #7c5cff;
+  outline: 2px solid #e5342a;
   outline-offset: 3px;
   border-radius: 4px;
 }
