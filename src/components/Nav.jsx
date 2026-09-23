@@ -41,9 +41,7 @@ export default function Nav() {
           }`}
         >
           <a href="#top" className="flex items-center gap-2.5 group">
-            <span className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center font-display font-bold text-white text-sm">
-              AP
-            </span>
+            <img src="/logo.png" alt="Aditya Parthasarathy" className="h-8 w-8 object-contain" />
             <span className="font-display font-semibold text-sm tracking-tight text-text hidden sm:block">
               Aditya Parthasarathy
             </span>
