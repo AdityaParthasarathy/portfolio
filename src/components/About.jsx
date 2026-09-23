@@ -16,6 +16,12 @@ const EDUCATION = [
 
 const EXPERIENCE = [
   {
+    role: 'Full Stack Intern',
+    place: 'ISMO Bio Photonics',
+    location: 'IITM Research Park, Chennai',
+    years: 'Sep 2026 – Present',
+  },
+  {
     role: 'Full Stack App Developer',
     place: 'StrawLabs',
     years: 'Jun 2026 – Present',
@@ -86,6 +92,7 @@ export default function About() {
                 <li key={e.role} className="border-l-2 border-accent/40 pl-4">
                   <div className="text-sm font-semibold text-text leading-snug">{e.role}</div>
                   <div className="text-xs text-muted mt-1">{e.place}</div>
+                  {e.location && <div className="text-xs text-muted/70 mt-0.5">{e.location}</div>}
                   <div className="text-xs text-accent/80 font-mono mt-0.5">{e.years}</div>
                 </li>
               ))}
