@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight, MapPin, Plus } from 'lucide-react'
-import MagneticButton from './MagneticButton'
 
 const VALUE_PROPS = ['Full-Stack Development', 'Real AI Integration', 'Production-Ready Systems']
 
@@ -89,20 +88,19 @@ export default function Hero() {
               </div>
 
               <div className="mt-8 flex flex-wrap items-center justify-end gap-4">
-                <MagneticButton
-                  as="a"
+                <a
                   href="#work"
-                  className="rounded-full bg-accent text-white text-sm font-semibold px-7 py-4 flex items-center gap-2 shadow-[0_0_40px_rgba(229,52,42,0.35)] hover:shadow-[0_0_60px_rgba(229,52,42,0.55)] transition-shadow"
+                  className="sweep-btn group flex items-center gap-2 rounded-full bg-text px-7 py-4 text-sm font-semibold text-ink shadow-[0_0_40px_rgba(229,52,42,0.35)] transition-colors duration-300 hover:text-white hover:shadow-[0_0_60px_rgba(229,52,42,0.55)]"
                 >
-                  See my work <ArrowUpRight size={16} />
-                </MagneticButton>
-                <MagneticButton
-                  as="a"
-                  href="#contact"
-                  className="rounded-full border border-line text-text text-sm font-semibold px-7 py-4 hover:border-accent/60 hover:text-accent transition-colors"
-                >
+                  See my work
+                  <ArrowUpRight
+                    size={14}
+                    className="h-6 w-6 rounded-full border border-line p-1.5 text-ink transition-all duration-300 ease-linear group-hover:rotate-90 group-hover:border-none group-hover:bg-text group-hover:text-ink"
+                  />
+                </a>
+                <a href="#contact" className="bubble-btn rounded-full px-7 py-4 text-sm font-semibold">
                   Let's talk
-                </MagneticButton>
+                </a>
               </div>
 
               <div className="mt-14 grid grid-cols-3 gap-6 max-w-md ml-auto">

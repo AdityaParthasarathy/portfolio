@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, Copy, Check, Github, Linkedin } from 'lucide-react'
-import MagneticButton from './MagneticButton'
 import EmailComposeModal from './EmailComposeModal'
 
 const EMAIL = 'adityapartha1@gmail.com'
@@ -93,13 +92,14 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-10 flex justify-center"
         >
-          <MagneticButton
-            as="button"
+          <button
             onClick={() => setComposeOpen(true)}
-            className="rounded-full bg-accent text-white text-base font-semibold px-9 py-5 flex items-center gap-2 shadow-[0_0_50px_rgba(229,52,42,0.4)] hover:shadow-[0_0_80px_rgba(229,52,42,0.6)] transition-shadow"
+            className="group gradient-btn rounded-full shadow-[0_0_50px_rgba(229,52,42,0.35)] hover:shadow-[0_0_80px_rgba(229,52,42,0.55)]"
           >
-            <Mail size={18} /> Email me
-          </MagneticButton>
+            <span className="gradient-btn__inner flex items-center gap-2 rounded-full px-9 py-5 text-base font-semibold text-text group-hover:text-white">
+              <Mail size={18} /> Email me
+            </span>
+          </button>
         </motion.div>
 
         <EmailComposeModal open={composeOpen} onClose={() => setComposeOpen(false)} />
@@ -112,17 +112,18 @@ export default function Contact() {
           className="mt-6 flex justify-center gap-3"
         >
           {SOCIALS.map(({ icon: Icon, label, href }) => (
-            <MagneticButton
+            <a
               key={label}
-              as="a"
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full border border-line text-text flex items-center justify-center hover:border-accent2/60 hover:text-accent2 transition-colors"
               aria-label={label}
+              className="group gradient-btn h-12 w-12 rounded-full"
             >
-              <Icon size={18} />
-            </MagneticButton>
+              <span className="gradient-btn__inner flex h-full w-full items-center justify-center rounded-full text-text group-hover:text-white">
+                <Icon size={18} />
+              </span>
+            </a>
           ))}
         </motion.div>
 
@@ -142,8 +143,10 @@ export default function Contact() {
             className="flex items-center justify-between gap-4 py-5 border-b border-line group"
           >
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-white/5 border border-line flex items-center justify-center group-hover:border-accent2/50 group-hover:bg-accent2/10 transition-colors">
-                <Github size={16} className="text-accent2" />
+              <div className="gradient-btn h-10 w-10 rounded-full">
+                <div className="gradient-btn__inner flex h-full w-full items-center justify-center rounded-full text-accent2 transition-colors group-hover:bg-transparent group-hover:text-white">
+                  <Github size={16} />
+                </div>
               </div>
               <div>
                 <div className="text-[11px] uppercase tracking-wide text-muted">GitHub</div>
@@ -158,8 +161,10 @@ export default function Contact() {
             className="flex items-center justify-between gap-4 py-5 group"
           >
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-white/5 border border-line flex items-center justify-center group-hover:border-accent2/50 group-hover:bg-accent2/10 transition-colors">
-                <Linkedin size={16} className="text-accent2" />
+              <div className="gradient-btn h-10 w-10 rounded-full">
+                <div className="gradient-btn__inner flex h-full w-full items-center justify-center rounded-full text-accent2 transition-colors group-hover:bg-transparent group-hover:text-white">
+                  <Linkedin size={16} />
+                </div>
               </div>
               <div>
                 <div className="text-[11px] uppercase tracking-wide text-muted">LinkedIn</div>

@@ -25,6 +25,15 @@ html {
   overflow-x: hidden;
 }
 
+/* Native cursor replaced by <CustomCursor> — same gate (fine pointer, motion
+   allowed) as the component itself, so the two never disagree. !important
+   overrides the cursor-pointer/cursor-grab utilities used throughout. */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  * {
+    cursor: none !important;
+  }
+}
+
 body {
   background: #060404;
   color: #f5f1ee;
@@ -95,6 +104,129 @@ body {
   will-change: transform;
 }
 
+/* Circle-sweep fill — a colored disc sweeps in from the left to fully cover the button */
+.sweep-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.sweep-btn::before {
+  content: '';
+  position: absolute;
+  z-index: -10;
+  left: -100%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 9999px;
+  background: var(--sweep-color, #e5342a);
+  transition: left 0.7s, transform 0.7s;
+}
+.sweep-btn:hover::before {
+  left: 0;
+  transform: scale(2.2);
+}
+
+/* Gradient-border reveal — outer gradient rim shows through once the inner fill clears on hover */
+.gradient-btn {
+  background-image: linear-gradient(144deg, #ff6b5b, #e5342a 50%, #060404);
+  padding: 2px;
+  box-shadow: rgba(229, 52, 42, 0.25) 0 15px 30px -5px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.gradient-btn:active {
+  transform: scale(0.94);
+}
+.gradient-btn__inner {
+  background-color: #0f0a0a;
+  transition: background-color 300ms ease;
+}
+.gradient-btn:hover .gradient-btn__inner {
+  background-color: transparent;
+}
+
+/* Let's talk — bubble burst on hover */
+.bubble-btn {
+  position: relative;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: #e5342a;
+  transition: all 0.2s ease;
+}
+.bubble-btn:active {
+  transform: scale(0.96);
+}
+.bubble-btn::before,
+.bubble-btn::after {
+  position: absolute;
+  content: '';
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+.bubble-btn:hover::before {
+  top: -70%;
+  background-image: radial-gradient(circle, #e5342a 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #e5342a 20%, transparent 30%),
+    radial-gradient(circle, #e5342a 20%, transparent 20%),
+    radial-gradient(circle, #e5342a 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #e5342a 15%, transparent 20%),
+    radial-gradient(circle, #e5342a 20%, transparent 20%),
+    radial-gradient(circle, #e5342a 20%, transparent 20%),
+    radial-gradient(circle, #e5342a 20%, transparent 20%),
+    radial-gradient(circle, #e5342a 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  animation: bubble-top 0.6s ease;
+}
+@keyframes bubble-top {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+.bubble-btn:hover::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, #e5342a 20%, transparent 20%),
+    radial-gradient(circle, #e5342a 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #e5342a 15%, transparent 20%),
+    radial-gradient(circle, #e5342a 20%, transparent 20%),
+    radial-gradient(circle, #e5342a 20%, transparent 20%),
+    radial-gradient(circle, #e5342a 20%, transparent 20%),
+    radial-gradient(circle, #e5342a 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  animation: bubble-bottom 0.6s ease;
+}
+@keyframes bubble-bottom {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
 /* Work timeline — active card/node state as scroll passes each event */
 .timeline-card-active {
   border-color: rgba(229, 52, 42, 0.5);
@@ -106,6 +238,27 @@ body {
   transform: translateX(-50%) scale(1.25);
   border-color: #e5342a;
   background: #e5342a;
+}
+
+/* Send button — icon bobs while it flies out on hover */
+@keyframes send-fly-bob {
+  from {
+    transform: translateY(0.08em);
+  }
+  to {
+    transform: translateY(-0.08em);
+  }
+}
+
+/* Resume download button — icon bounces once the download panel is revealed */
+@keyframes docs-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15%);
+  }
 }
 
 /* Focus ring accessibility */

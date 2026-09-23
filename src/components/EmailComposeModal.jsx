@@ -181,7 +181,7 @@ export default function EmailComposeModal({ open, onClose }) {
                     <button
                       type="submit"
                       disabled={!canSend}
-                      className="inline-flex items-center gap-2 rounded-full bg-accent text-white text-sm font-semibold px-5 py-2.5 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-accent2 transition-colors"
+                      className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-accent text-white text-sm font-semibold pl-5 pr-6 py-2.5 hover:gap-0 hover:pr-5 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-accent2 active:scale-95 transition-[background-color,transform,gap,padding] duration-300"
                     >
                       {status === 'sending' ? (
                         <>
@@ -189,7 +189,15 @@ export default function EmailComposeModal({ open, onClose }) {
                         </>
                       ) : (
                         <>
-                          <Send size={14} /> Send
+                          <span className="block transition-transform duration-300 ease-in-out group-hover:animate-[send-fly-bob_0.6s_ease-in-out_infinite_alternate]">
+                            <Send
+                              size={14}
+                              className="block transition-transform duration-300 ease-in-out group-hover:translate-x-[0.3em] group-hover:rotate-45 group-hover:scale-110"
+                            />
+                          </span>
+                          <span className="block max-w-[3em] overflow-hidden whitespace-nowrap opacity-100 transition-all duration-200 ease-in-out group-hover:max-w-0 group-hover:opacity-0">
+                            Send
+                          </span>
                         </>
                       )}
                     </button>

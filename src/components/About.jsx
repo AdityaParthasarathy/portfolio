@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Quote } from 'lucide-react'
+import { Quote, ArrowUpRight } from 'lucide-react'
 
 const EDUCATION = [
   {
@@ -126,13 +126,10 @@ export default function About() {
               <p className="font-display text-lg font-semibold text-text tracking-tight">
                 Let's create something worth shipping.
               </p>
-              <a
-                href="#contact"
-                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent2 transition-colors"
-              >
-                Get in touch
-                <span className="w-5 h-5 rounded-full border border-accent/60 flex items-center justify-center text-[10px]">
-                  →
+              <a href="#contact" className="group gradient-btn mt-4 inline-flex rounded-full">
+                <span className="gradient-btn__inner flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-text group-hover:text-white">
+                  Get in touch
+                  <ArrowUpRight size={14} />
                 </span>
               </a>
             </div>

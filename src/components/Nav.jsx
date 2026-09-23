@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ArrowUpRight, Github, Linkedin, Download } from 'lucide-react'
-import MagneticButton from './MagneticButton'
+import { Menu, X, ArrowUpRight, Github, Linkedin, Download, FileText } from 'lucide-react'
 
 const LINKS = [
   { href: '#work', label: 'Work' },
@@ -64,41 +63,53 @@ export default function Nav() {
           </nav>
 
           <div className="hidden md:flex items-center gap-6">
-            <div className="flex items-center gap-4 pr-6 border-r border-line">
+            <div className="flex items-center gap-3 pr-6 border-r border-line">
               <a
                 href={GITHUB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="text-muted hover:text-accent transition-colors"
+                className="group gradient-btn h-9 w-9 rounded-full"
               >
-                <Github size={18} />
+                <span className="gradient-btn__inner flex h-full w-full items-center justify-center rounded-full text-text group-hover:text-white">
+                  <Github size={15} />
+                </span>
               </a>
               <a
                 href={LINKEDIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="text-muted hover:text-accent transition-colors"
+                className="group gradient-btn h-9 w-9 rounded-full"
               >
-                <Linkedin size={18} />
+                <span className="gradient-btn__inner flex h-full w-full items-center justify-center rounded-full text-text group-hover:text-white">
+                  <Linkedin size={15} />
+                </span>
               </a>
             </div>
-            <MagneticButton
-              as="a"
+            <a
               href={RESUME_URL}
               download
-              className="rounded-full border border-line text-text text-sm font-semibold px-5 py-2.5 flex items-center gap-1.5 hover:border-accent/60 hover:text-accent transition-colors"
+              aria-label="Download resume"
+              className="group relative flex h-10 items-center overflow-hidden rounded-full text-sm font-semibold"
             >
-              Resume <Download size={14} />
-            </MagneticButton>
-            <MagneticButton
-              as="a"
+              <span className="flex h-10 items-center gap-2 rounded-full border border-line bg-surface-2 px-5 text-text transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:-translate-y-full">
+                <FileText size={15} /> Resume
+              </span>
+              <span className="absolute inset-0 flex translate-y-full items-center justify-center gap-2 rounded-full border border-accent2/30 bg-accent px-5 text-white transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:translate-y-0">
+                <Download size={17} className="group-hover:animate-[docs-bounce_1s_ease-in-out_infinite]" />
+              </span>
+            </a>
+            <a
               href="#contact"
-              className="rounded-full bg-text text-ink text-sm font-semibold px-5 py-2.5 flex items-center gap-1.5 hover:bg-accent hover:text-white transition-colors"
+              className="sweep-btn group flex items-center gap-2 rounded-full bg-text px-5 py-2.5 text-sm font-semibold text-ink transition-colors duration-300 hover:text-white"
             >
-              Hire me <ArrowUpRight size={14} />
-            </MagneticButton>
+              Hire me
+              <ArrowUpRight
+                size={14}
+                className="h-6 w-6 rounded-full border border-line p-1.5 text-ink transition-all duration-300 ease-linear group-hover:rotate-90 group-hover:border-none group-hover:bg-text group-hover:text-ink"
+              />
+            </a>
           </div>
 
           <button
