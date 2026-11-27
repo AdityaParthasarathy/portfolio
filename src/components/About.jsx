@@ -24,7 +24,7 @@ const EXPERIENCE = [
   {
     role: 'Full Stack App Developer',
     place: 'StrawLabs',
-    years: 'Jun 2026 – Present',
+    years: 'Jun 2026 – Sep 2026',
   },
   {
     role: 'UI/UX Intern',
