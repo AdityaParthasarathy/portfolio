@@ -11,7 +11,8 @@ const LINKS = [
 
 const GITHUB_URL = 'https://github.com/AdityaParthasarathy'
 const LINKEDIN_URL = 'https://www.linkedin.com/in/aditya-parthasarathy-924a6a349'
-const RESUME_URL = '/Aditya_Parthasarathy_Resume.pdf'
+const RESUME_FILE = 'Aditya Parthasarathy Resume.pdf'
+const RESUME_URL = `/${encodeURIComponent(RESUME_FILE)}`
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -87,7 +88,7 @@ export default function Nav() {
             </div>
             <a
               href={RESUME_URL}
-              download
+              download={RESUME_FILE}
               aria-label="Download resume"
               className="group relative flex h-10 items-center overflow-hidden rounded-full text-sm font-semibold"
             >
@@ -141,7 +142,7 @@ export default function Nav() {
               ))}
               <a
                 href={RESUME_URL}
-                download
+                download={RESUME_FILE}
                 onClick={() => setOpen(false)}
                 className="mt-2 px-3 py-3 rounded-lg text-sm font-semibold border border-line text-text text-center flex items-center justify-center gap-1.5"
               >
