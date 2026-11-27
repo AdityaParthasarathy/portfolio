@@ -10,7 +10,7 @@ const LINKS = [
 ]
 
 const GITHUB_URL = 'https://github.com/AdityaParthasarathy'
-const LINKEDIN_URL = 'https://www.linkedin.com/in/aditya-parthasarathy-924a6a349'
+const LINKEDIN_URL = 'https://www.linkedin.com/in/aditya-parthasarathy-188792447'
 const RESUME_FILE = 'Aditya Parthasarathy Resume.pdf'
 const RESUME_URL = `/${encodeURIComponent(RESUME_FILE)}`
 

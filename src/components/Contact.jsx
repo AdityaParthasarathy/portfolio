@@ -6,7 +6,7 @@ import EmailComposeModal from './EmailComposeModal'
 const EMAIL = 'adityapartha1@gmail.com'
 const PHONE = '+91 81229 07520'
 const GITHUB_URL = 'https://github.com/AdityaParthasarathy'
-const LINKEDIN_URL = 'https://www.linkedin.com/in/aditya-parthasarathy-924a6a349'
+const LINKEDIN_URL = 'https://www.linkedin.com/in/aditya-parthasarathy-188792447'
 
 const SOCIALS = [
   { icon: Github, label: 'GitHub', href: GITHUB_URL },
